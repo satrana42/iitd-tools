@@ -1,6 +1,7 @@
 from bs4 import BeautifulSoup
-import urllib2 
+import urllib2
 
+print 'Enter your consolidated grade sheet url'
 url = raw_input()
 url = urllib2.urlopen(url)
 
@@ -34,6 +35,6 @@ for course_type in courses_done:
 	print 'Course Type: ', course_type
 	total_credits = 0
 	for (course_code, course_credits) in courses_done[course_type]:
-		print course_code, course_credits
+		print '\t', course_code, course_credits
 		total_credits += course_credits
 	print 'Total Credits: ', total_credits
