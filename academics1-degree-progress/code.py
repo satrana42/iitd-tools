@@ -12,7 +12,7 @@ soup = BeautifulSoup(content)
 tables = soup.findAll('table')
 semester_count = 0
 courses_done = {}
-invalid_grades = set([u'W', u'F'])
+invalid_grades = set([u'W', u'F', U'E', u'NF'])
 for table in tables:
 	rows = table.find_all('tr')
 	rows = [row.find_all('td') for row in rows]
@@ -31,10 +31,13 @@ for table in tables:
 				if course_grade not in invalid_grades:
 					courses_done[course_type].add((course_code, course_credits))
 
+total_degree_credits = 0
 for course_type in courses_done:
 	print 'Course Type: ', course_type
 	total_credits = 0
 	for (course_code, course_credits) in courses_done[course_type]:
 		print '\t', course_code, course_credits
 		total_credits += course_credits
+	total_degree_credits += total_credits
 	print 'Total Credits: ', total_credits
+print 'Total Degree Credits: ', total_degree_credits
