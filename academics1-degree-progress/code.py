@@ -12,7 +12,7 @@ soup = BeautifulSoup(content)
 tables = soup.findAll('table')
 semester_count = 0
 courses_done = {}
-invalid_grades = set([u'W', u'F', U'E', u'NF'])
+invalid_grades = set([u'W', u'F', u'E', u'NF', u'X'])
 for table in tables:
 	rows = table.find_all('tr')
 	rows = [row.find_all('td') for row in rows]
